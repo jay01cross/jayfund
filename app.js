@@ -21,6 +21,9 @@ app.use(express.static(`${__dirname}/public`));
 // setting http response secure headers
 app.use(helmet());
 
+// parse request body
+app.use(express.urlencoded({ extended: true }));
+
 // home page
 app.use("/", home);
 

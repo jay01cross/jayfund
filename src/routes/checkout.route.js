@@ -6,6 +6,6 @@ const router = require("express").Router();
 // custom module
 const { checkout } = require("../controllers/checkout.controller");
 
-router.get("/", checkout);
+router.post("/", checkout);
 
 module.exports = router;
