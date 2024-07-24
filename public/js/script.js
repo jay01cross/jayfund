@@ -56,6 +56,7 @@
       if (response.ok) {
         const responseData = await response.json();
         console.log(responseData);
+        window.location.href = responseData.result.url;
       } else {
         console.error("Form submission failed: ", response.statusText);
       }

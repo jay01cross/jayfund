@@ -23,6 +23,13 @@ app.use(helmet());
 
 // parse request body
 app.use(express.urlencoded({ extended: true }));
+app.use(
+  express.json({
+    verify: (req, res, buf) => {
+      req.rawBody = buf.toString();
+    },
+  })
+);
 
 // home page
 app.use("/", home);
