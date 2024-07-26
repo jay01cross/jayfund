@@ -235,23 +235,35 @@
             <section class="card outlined history">
               <h2 class="title-medium">Recent supporters</h2>
 
+              <% if (locals.supporterList.length) { %>
               <ul class="history-list">
+                <% locals.supporterList.forEach(({name, amount, message}) => {
+                %>
                 <li class="history-card">
                   <div class="card-header">
-                    <div class="card-avatar label-large">JD</div>
+                    <div class="card-avatar label-large">
+                      <%=locals.getAvatar(name)%>
+                    </div>
                   </div>
 
                   <h3 class="title-small card-title">
-                    John Doe contributed with
-                    <span class="primary-text">$100</span>
+                    <%= name %> contributed with
+                    <span class="primary-text">$\<%= amount %></span>
                   </h3>
 
+                  <% if (message) { %>
                   <p class="card-body body-large on-surface-variant-text">
-                    Lorem ipsum dolor sit amet consectetur adipiscing elit.
-                    Ullamcorper aptent!
+                    <%= message %>
                   </p>
+                  <% } %>
                 </li>
+                <% }) %>
               </ul>
+              <% } else { %>
+              <p class="body-medium on-surface-variant-text">
+                No one supported yet!
+              </p>
+              <% } %>
             </section>
           </div>
         </div>
